@@ -1,0 +1,11 @@
+<div class="votingWidgetContainer pointable" (click)="onClick()">
+  <div class="well votingWidget">
+    <div class="votingButton">
+      <fa-icon *ngIf="voted" style="color: white" [icon]="faHeartSolid"></fa-icon>
+      <fa-icon *ngIf="!voted" style="color: white" [icon]="faHeartRegular"></fa-icon>
+    </div>
+    <div class="badge badge-inverse votingCount">
+      <div>{{count}}</div>
+    </div>
+  </div>
+</div>

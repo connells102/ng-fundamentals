@@ -1,0 +1,49 @@
+<div class="navbar navbar-expand-lg navbar-default justify-content-between">
+  <a class="navbar-brand">ngEvents</a>
+  <button class="navbar-toggler navbar-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <fa-icon [icon]="faBars" style="color: white"></fa-icon>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav mr-auto">
+        <li class="nav-item">
+          <a [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">All Events</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/events/new']" routerLinkActive="active">Create Event</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Events
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a href="">Angular Connect</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="navbar-header navbar-right">
+        <ul class="nav navbar-nav">
+          <li>
+            <a *ngIf="!authService.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+            <a *ngIf="authService.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{authService.currentUser.firstName}}</a>
+          </li>
+        </ul>
+      </div>
+      <form id="searchForm" (ngSubmit)="searchSessions(searchTerm)" class="form-inline navbar-right">
+        <input [(ngModel)]="searchTerm" name="searchTerm" type="text" class="form-control" placeholder="Search Sessions">
+        <button class="btn btn-default" modal-trigger="searchResults">Search</button>
+      </form>
+    </div>
+  </div>
+
+  <simple-modal closeOnBodyClick="true" elementId="searchResults" title="Matching Sessions">
+    <div class="list-group">
+      <a class="list-group-item" *ngFor="let session of foundSessions"
+        [routerLink]="['/events', session.id]">
+        {{session.name}}
+      </a>
+    </div>
+  </simple-modal>

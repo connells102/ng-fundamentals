@@ -1,0 +1,28 @@
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.event-image {
+  height: 100px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.votes {
+  margin-right: 20px;
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+
+.all {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+  .all-buttons {
+    margin-top: 20px;
+  }
+}
