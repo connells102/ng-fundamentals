@@ -12,17 +12,20 @@
         <li class="nav-item">
           <a [routerLink]="['/events/new']" routerLinkActive="active">Create Event</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Events
             <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+         </a>
+          <ul class="dropdown-menu">
             <li>
-              <a href="">Angular Connect</a>
+              <a class="dropdown-item" [routerLink]="['/events/1']">Angular Connect</a>
+              <a class="dropdown-item" [routerLink]="['/events/2']">ng-nl</a>
+              <a class="dropdown-item" [routerLink]="['/events/3']">ng-Conf 2037</a>
+              <a class="dropdown-item" [routerLink]="['/events/4']">UN Angular Summit</a>
+              <a class="dropdown-item" [routerLink]="['/events/5']">ng-Vegas</a>
             </li>
-          </ul>
-        </li>
+        </ul>
       </ul>
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../user/auth/auth.service';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { EventService, ISession } from '../events';
+import { EventService, IEvent, ISession } from '../events';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'events-navbar',
@@ -9,14 +10,17 @@ import { EventService, ISession } from '../events';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  faBars = faBars;
+  events: IEvent[] = [];
   searchTerm: string = '';
   foundSessions: ISession[] = [];
 
+  faBars = faBars;
   constructor(public authService: AuthService,
-    private eventService: EventService) { }
+    private eventService: EventService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.events = this.route.snapshot.data['events'];
   }
 
   searchSessions(searchTerm: string) {
