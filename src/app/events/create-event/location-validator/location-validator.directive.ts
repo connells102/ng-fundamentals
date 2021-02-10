@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
+import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 @Directive({
   selector: '[validateLocation]',
@@ -8,23 +8,23 @@ import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator,
 export class LocationValidatorDirective implements Validator {
 
   validate(control: AbstractControl): ValidationErrors | null {
-    return LocationValidator(control);
+    return locationValidator(control);
   }
 }
 
-export const LocationValidator: ValidatorFn =
+export const locationValidator: ValidatorFn =
   (control: AbstractControl): ValidationErrors | null => {
-    const address = control.get('address');
-    const city = control.get('city');
-    const country = control.get('country');
-    const urlName = control.get('onlineUrl');
+    const address = control.get('location.address');
+    const city = control.get('location.city');
+    const country = control.get('location.country');
+    const urlName = control.get('location.onlineUrl');
 
     if ((address && address.value && city && city.value &&
       country && country.value) || (urlName && urlName.value)) {
         return null;
       }
     else {
-      return { validateLocation: false };
+      return { validateLocation: true };
     }
   }
 
