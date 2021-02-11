@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   logOut(): Observable<any> {
-    const user: any = {};
+    let user!: IUser;
     this.currentUser = user;
 
     const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };

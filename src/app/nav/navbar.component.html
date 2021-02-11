@@ -37,7 +37,7 @@
       </div>
       <form id="searchForm" (ngSubmit)="searchSessions(searchTerm)" class="form-inline navbar-right">
         <input [(ngModel)]="searchTerm" name="searchTerm" type="text" class="form-control" placeholder="Search Sessions">
-        <button class="btn btn-default" modal-trigger="searchResults">Search</button>
+        <button class="btn btn-default" appModalTrigger="searchResults">Search</button>
       </form>
     </div>
   </div>
