@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JqueryService } from './jquery.service';
+import { Jquery } from './jquery.service';
 
-describe('JqueryService', () => {
-  let service: JqueryService;
+describe('Jquery', () => {
+  let service: Jquery;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(JqueryService);
+    service = TestBed.inject(Jquery);
   });
 
   it('should be created', () => {

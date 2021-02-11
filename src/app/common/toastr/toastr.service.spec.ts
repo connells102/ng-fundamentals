@@ -1,13 +1,16 @@
 import { TestBed } from '@angular/core/testing';
+import { Toastr, TOASTR_TOKEN } from './toastr.service';
 
-import { ToastrService } from './toastr.service';
-
-describe('ToastrService', () => {
-  let service: ToastrService;
+describe('Toastr', () => {
+  let service: Toastr;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ToastrService);
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: TOASTR_TOKEN, useValue: {} }
+      ]
+    });
+    service = TestBed.inject(TOASTR_TOKEN);
   });
 
   it('should be created', () => {

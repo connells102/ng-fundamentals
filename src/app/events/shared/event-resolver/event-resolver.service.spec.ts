@@ -1,13 +1,12 @@
-import { TestBed } from '@angular/core/testing';
-
 import { EventResolverService } from './event-resolver.service';
 
 describe('EventResolverService', () => {
   let service: EventResolverService;
+  let mockHttp;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(EventResolverService);
+    mockHttp = jasmine.createSpyObj('mockHttp', ['delete', 'post']);
+    service = new EventResolverService(mockHttp);
   });
 
   it('should be created', () => {
