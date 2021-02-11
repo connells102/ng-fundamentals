@@ -1,12 +1,12 @@
-import { DebugElement, NO_ERRORS_SCHEMA } from "@angular/core";
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
-import { CollapsibleWellComponent } from "src/app/common/collapsible-well/collapsible-well.component";
-import { AuthService } from "src/app/user/auth/auth.service";
-import { DurationPipe } from "../../shared/duration/duration.pipe";
-import { UpvoteComponent } from "../upvote/upvote.component";
-import { VoterService } from "../voter/voter.service";
-import { SessionListComponent } from "./session-list.component";
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { CollapsibleWellComponent } from 'src/app/common/collapsible-well/collapsible-well.component';
+import { AuthService } from 'src/app/user/auth/auth.service';
+import { DurationPipe } from '../../shared/duration/duration.pipe';
+import { UpvoteComponent } from '../upvote/upvote.component';
+import { VoterService } from '../voter/voter.service';
+import { SessionListComponent } from './session-list.component';
 
 describe('SessionListComponent', () => {
   let fixture: ComponentFixture<SessionListComponent>;
@@ -15,11 +15,11 @@ describe('SessionListComponent', () => {
   let debugElement: DebugElement;
 
   beforeEach(waitForAsync(() => {
-    let mockAuthService = {
+    const mockAuthService = {
       isAuthenticated: () => true,
       currentUser: { username: 'Joe' }
     };
-    let mockVoterService = {
+    const mockVoterService = {
       userHasVoted: () => true
     };
 
@@ -27,8 +27,8 @@ describe('SessionListComponent', () => {
       imports: [],
       declarations: [
         SessionListComponent,
-        //UpvoteComponent,
-        //CollapsibleWellComponent,
+        // UpvoteComponent,
+        // CollapsibleWellComponent,
         DurationPipe
       ],
       providers: [

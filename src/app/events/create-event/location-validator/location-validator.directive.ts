@@ -2,7 +2,7 @@ import { Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 @Directive({
-  selector: '[validateLocation]',
+  selector: '[appValidateLocation]',
   providers: [{provide: NG_VALIDATORS, useExisting: LocationValidatorDirective, multi: true}]
 })
 export class LocationValidatorDirective implements Validator {
@@ -26,5 +26,5 @@ export const locationValidator: ValidatorFn =
     else {
       return { validateLocation: true };
     }
-  }
+  };
 

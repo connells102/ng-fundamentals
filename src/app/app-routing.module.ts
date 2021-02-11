@@ -7,7 +7,7 @@ import {
   EventsListComponent,
   EventsListResolverService,
   CreateSessionComponent
-} from './events/index'
+} from './events/index';
 
 import { PageNotFoundComponent } from './errors/page-not-found.component';
 import { EventResolverService } from './events/shared/event-resolver/event-resolver.service';
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: '404', component: PageNotFoundComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) }
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

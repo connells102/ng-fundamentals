@@ -1,13 +1,13 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { EventsAppComponent } from "./events-app.component"
-import { AuthService } from "./user/auth/auth.service";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { EventsAppComponent } from './events-app.component';
+import { AuthService } from './user/auth/auth.service';
 
 describe('EventsAppComponent', () => {
   let component: EventsAppComponent;
   let fixture: ComponentFixture<EventsAppComponent>;
 
   beforeEach(async () => {
-    let mockAuthService = {
+    const mockAuthService = {
       checkAuthenticationStatus: () => true
     };
 

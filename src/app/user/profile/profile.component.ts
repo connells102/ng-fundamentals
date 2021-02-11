@@ -5,7 +5,7 @@ import { Toastr, TOASTR_TOKEN } from 'src/app/common/toastr/toastr.service';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
-  selector: 'profile',
+  selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
@@ -15,8 +15,8 @@ export class ProfileComponent implements OnInit {
   private lastName!: FormControl;
 
   constructor(private authService: AuthService,
-    private router: Router,
-    @Inject(TOASTR_TOKEN) private toastr: Toastr) { }
+              private router: Router,
+              @Inject(TOASTR_TOKEN) private toastr: Toastr) { }
 
   ngOnInit(): void {
     this.firstName = new FormControl(this.authService.currentUser.firstName,
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  saveProfile(formValues: any) {
+  saveProfile(formValues: any): void {
     if (this.profileForm.valid) {
       this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
         .subscribe(() => {
@@ -38,19 +38,19 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  validateFirstName() {
+  validateFirstName(): boolean {
     return this.firstName.valid || this.firstName.untouched;
   }
 
-  validateLastName() {
+  validateLastName(): boolean {
     return this.lastName.valid || this.lastName.untouched;
   }
 
-  cancel() {
+  cancel(): void {
     this.router.navigate(['events']);
   }
 
-  logOut() {
+  logOut(): void {
     this.authService.logOut().subscribe(() => {
       this.router.navigate(['/user/login']);
     });

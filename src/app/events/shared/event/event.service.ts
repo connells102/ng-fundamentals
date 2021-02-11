@@ -22,8 +22,8 @@ export class EventService {
       .pipe(catchError(this.handleError<IEvent>('getEvents')));
   }
 
-  saveEvent(event: any) {
-    let options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
+  saveEvent(event: any): Observable<IEvent> {
+    const options = { headers: new HttpHeaders({'Content-Type': 'application/json'}) };
     return this.http
       .post<IEvent>('/api/events', event, options)
       .pipe(catchError(this.handleError<IEvent>('getEvents')));
@@ -35,7 +35,7 @@ export class EventService {
       .pipe(catchError(this.handleError<ISession[]>('searchSessions')));
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);

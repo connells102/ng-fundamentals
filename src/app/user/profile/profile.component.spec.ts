@@ -15,7 +15,7 @@ describe('ProfileComponent', () => {
   let mockHttp: HttpTestingController;
 
   beforeEach(async () => {
-    let mockAuthService = {
+    const mockAuthService = {
       currentUser: {
         firstName: 'Joe',
         lastName: 'Smith'

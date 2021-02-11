@@ -9,49 +9,49 @@ import { EventService } from '../shared/event/event.service';
 })
 export class EventDetailsComponent implements OnInit {
   event: any = '';
-  addMode: boolean = false;
-  filterBy: string = 'all';
-  sortBy: string = 'votes';
+  addMode = false;
+  filterBy = 'all';
+  sortBy = 'votes';
 
   constructor(private eventService: EventService,
-    private route: ActivatedRoute) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.data.forEach((data) => {
-      this.event = data['event'];
+      this.event = data.event;
       this.addMode = false;
-    })
+    });
   }
 
-  all() {
+  all(): void {
     this.filterBy = 'all';
   }
 
-  beginner() {
+  beginner(): void {
     this.filterBy = 'beginner';
   }
 
-  intermediate() {
+  intermediate(): void {
     this.filterBy = 'intermediate';
   }
 
-  advanced() {
+  advanced(): void {
     this.filterBy = 'advanced';
   }
 
-  name() {
+  name(): void {
     this.sortBy = 'name';
   }
 
-  votes() {
+  votes(): void {
     this.sortBy = 'votes';
   }
 
-  addSession() {
+  addSession(): void {
     this.addMode = true;
   }
 
-  saveNewSession(session: ISession) {
+  saveNewSession(session: ISession): void {
     const nextId = Math.max.apply(null, this.event.sessions.map((s: { id: number; }) => s.id));
     session.id = nextId + 1;
     this.event.sessions.push(session);
@@ -59,7 +59,7 @@ export class EventDetailsComponent implements OnInit {
     this.addMode = false;
   }
 
-  cancelAddSession() {
+  cancelAddSession(): void {
     this.addMode = false;
   }
 }

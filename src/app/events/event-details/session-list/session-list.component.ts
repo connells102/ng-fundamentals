@@ -5,33 +5,33 @@ import { AuthService } from 'src/app/user/auth/auth.service';
 import { VoterService } from '../voter/voter.service';
 
 @Component({
-  selector: 'session-list',
+  selector: 'app-session-list',
   templateUrl: './session-list.component.html',
   styleUrls: ['./session-list.component.css']
 })
 export class SessionListComponent implements OnChanges {
   @Input() sessions: ISession[] = [];
-  @Input() filterBy: string = 'all';
-  @Input() sortBy: string = 'votes';
-  @Input() eventId: number = -1;
+  @Input() filterBy = 'all';
+  @Input() sortBy = 'votes';
+  @Input() eventId = -1;
 
   visibleSessions: ISession[] = [];
   faFire = faFire;
 
   constructor(public authService: AuthService,
-    private voterService: VoterService) { }
+              private voterService: VoterService) { }
 
   ngOnChanges(): void {
     if (this.sessions) {
       this.filterSessions(this.filterBy);
-      
+
       this.sortBy === 'name' ?
       this.visibleSessions.sort(sortByNameAscending) :
       this.visibleSessions.sort(sortByVotesDescending);
     }
   }
 
-  toggleVote(session: ISession) {
+  toggleVote(session: ISession): void {
     if (this.userHasVoted(session)) {
       this.voterService.deleteVoter(this.eventId, session, this.authService.currentUser.username);
     }
@@ -44,11 +44,11 @@ export class SessionListComponent implements OnChanges {
     }
   }
 
-  userHasVoted(session: ISession) {
+  userHasVoted(session: ISession): boolean {
     return this.voterService.userHasVoted(session, this.authService.currentUser.username);
   }
 
-  filterSessions(filter: string) {
+  filterSessions(filter: string): void {
     if (filter === 'all') {
       this.visibleSessions = this.sessions.slice(0);
     }
@@ -60,15 +60,18 @@ export class SessionListComponent implements OnChanges {
   }
 }
 
-function sortByNameAscending(s1: ISession, s2: ISession) {
-  if (s1.name > s2.name)
+function sortByNameAscending(s1: ISession, s2: ISession): number {
+  if (s1.name > s2.name) {
     return 1;
-  else if (s1.name === s2.name)
+  }
+  else if (s1.name === s2.name) {
     return 0;
-  else
+  }
+  else {
     return -1;
+  }
 }
 
-function sortByVotesDescending(s1: ISession, s2: ISession) {
+function sortByVotesDescending(s1: ISession, s2: ISession): number {
   return s2.voters.length - s1.voters.length;
 }

@@ -3,22 +3,22 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
-  selector: 'login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string = '';
-  password: string = '';
-  mouseoverLogin: boolean = false;
-  loginInvalid: boolean = false;
+  username = '';
+  password = '';
+  mouseoverLogin = false;
+  loginInvalid = false;
 
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  login(formValues:any) {
+  login(formValues: any): void {
     this.authService.loginUser(formValues.username, formValues.password)
       .subscribe(response => {
         if (!response) {
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['events']);
   }
 
-  cancel() {
+  cancel(): void {
     this.router.navigate(['events']);
   }
 }

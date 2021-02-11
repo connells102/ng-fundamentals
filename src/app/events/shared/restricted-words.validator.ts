@@ -1,15 +1,15 @@
-import { AbstractControl, ValidatorFn } from "@angular/forms"
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-  export function restrictedWords(words: string[]): ValidatorFn {
+export function restrictedWords(words: string[]): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {
-      if (!words) return null;
+      if (!words) { return null; }
 
-      var invalidWords = words
+      const invalidWords = words
         .map(w => control.value.includes(w) ? w : null)
         .filter(w => w != null);
 
       return invalidWords && invalidWords.length > 0
-      ? {'restrictedWords': invalidWords.join(', ')}
+      ? {restrictedWords: invalidWords.join(', ')}
       : null;
-    }
+    };
   }

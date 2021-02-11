@@ -1,27 +1,27 @@
-import { StringMapWithRename } from "@angular/compiler/src/compiler_facade_interface";
+import { StringMapWithRename } from '@angular/compiler/src/compiler_facade_interface';
 
 export interface IEvent {
-  id: number
-  name: string
-  date: Date
-  time: string
-  price: number
-  imageUrl: string
+  id: number;
+  name: string;
+  date: Date;
+  time: string;
+  price: number;
+  imageUrl: string;
   location?: {
     address: string
     city: string
     country: string
-  },
-  onlineUrl?: string
-  sessions: ISession[]
+  };
+  onlineUrl?: string;
+  sessions: ISession[];
 }
 
 export interface ISession {
-  id: number
-  name: string
-  presenter: string
-  duration: number
-  level: string
-  abstract: string
-  voters: string[]
+  id: number;
+  name: string;
+  presenter: string;
+  duration: number;
+  level: string;
+  abstract: string;
+  voters: string[];
 }

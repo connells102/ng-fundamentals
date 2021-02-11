@@ -1,10 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISession } from '../../shared';
-import { restrictedWords } from '../../shared/index'
+import { restrictedWords } from '../../shared/index';
 
 @Component({
-  selector: 'create-session',
+  selector: 'app-create-session',
   templateUrl: './create-session.component.html',
   styleUrls: ['./create-session.component.css']
 })
@@ -37,8 +37,8 @@ export class CreateSessionComponent implements OnInit {
     });
   }
 
-  saveSession(formValues: any) {
-    let session:ISession = {
+  saveSession(formValues: any): void {
+    const session: ISession = {
       id: -1,
       name: formValues.name,
       presenter: formValues.presenter,
@@ -51,7 +51,7 @@ export class CreateSessionComponent implements OnInit {
     this.saveNewSession.emit(session);
   }
 
-  cancel() {
+  cancel(): void {
     this.cancelAddSession.emit();
   }
 

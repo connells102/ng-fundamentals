@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 export const userRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'login', component: LoginComponent }
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(userRoutes)],
