@@ -1,14 +1,14 @@
 <div class="row" *ngFor="let session of visibleSessions">
 <div class="col-md-1">
   <div *ngIf="authService.isAuthenticated()">
-  <upvote (vote)="toggleVote(session)"
+  <app-upvote (vote)="toggleVote(session)"
     [count]="session.voters.length"
     [voted]="userHasVoted(session)">
-  </upvote>
+  </app-upvote>
   </div>
 </div>
   <div class="col-md-10 pad-me">
-    <collapsible-well>
+    <app-collapsible-well>
       <div well-title>
         {{session.name}}
         <fa-icon *ngIf="session.voters.length > 3"
@@ -22,6 +22,6 @@
 
       <p>{{session.abstract}}</p>
       </div>
-    </collapsible-well>
+    </app-collapsible-well>
   </div>
 </div>
